@@ -71,7 +71,7 @@ create.addActionListener(this::createActionPerformed);
 back=new javax.swing.JButton();
 back.setText("Back to Login");
 back.addActionListener(this::backActionPerformed);
-heading.setFont(new java.awt.Font("Segoe UI",1,26));brand.setFont(new java.awt.Font("Segoe UI",1,24));leftPanel=new javax.swing.JPanel();leftPanel.setBackground(new java.awt.Color(228,228,228));
+heading.setFont(new java.awt.Font("Segoe UI",1,26));brand.setFont(new java.awt.Font("Segoe UI",1,24));leftPanel=new javax.swing.JPanel();
 javax.swing.GroupLayout layout=new javax.swing.GroupLayout(getContentPane());getContentPane().setLayout(layout);
 layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 .addGroup(layout.createSequentialGroup().addGap(15,15,15).addComponent(brand,200,200,200).addGap(545,545,Short.MAX_VALUE))
@@ -113,6 +113,17 @@ layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Align
 .addGroup(layout.createSequentialGroup().addGap(490,490,490).addComponent(create,40,40,40).addGap(90,90,Short.MAX_VALUE))
 .addGroup(layout.createSequentialGroup().addGap(490,490,490).addComponent(back,40,40,40).addGap(90,90,Short.MAX_VALUE))
 .addComponent(leftPanel,620,620,620));
+leftPanel.setBackground(new java.awt.Color(15,35,61));
+leftPanel.setForeground(new java.awt.Color(255,255,255));
+home.setBackground(new java.awt.Color(27,53,85));
+home.setForeground(new java.awt.Color(255,255,255));
+browse.setBackground(new java.awt.Color(27,53,85));
+browse.setForeground(new java.awt.Color(255,255,255));
+matching.setBackground(new java.awt.Color(27,53,85));
+matching.setForeground(new java.awt.Color(255,255,255));
+account.setBackground(new java.awt.Color(27,53,85));
+account.setForeground(new java.awt.Color(255,255,255));
+brand.setForeground(new java.awt.Color(255,255,255));
 pack();setLocationRelativeTo(null);
 }// </editor-fold>//GEN-END:initComponents
 // Variables declaration - do not modify//GEN-BEGIN:variables

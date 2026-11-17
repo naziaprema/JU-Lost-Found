@@ -144,7 +144,7 @@ public class messages extends javax.swing.JFrame {
         setTitle("CampusFind - Messages");
         setResizable(false);
 
-        leftPanel.setBackground(new java.awt.Color(228, 228, 228));
+        
         leftPanel.setPreferredSize(new java.awt.Dimension(230, 620));
 
         brandLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -336,7 +336,18 @@ public class messages extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        pack();
+        leftPanel.setBackground(new java.awt.Color(15,35,61));
+leftPanel.setForeground(new java.awt.Color(255,255,255));
+home.setBackground(new java.awt.Color(27,53,85));
+home.setForeground(new java.awt.Color(255,255,255));
+browse.setBackground(new java.awt.Color(27,53,85));
+browse.setForeground(new java.awt.Color(255,255,255));
+matching.setBackground(new java.awt.Color(27,53,85));
+matching.setForeground(new java.awt.Color(255,255,255));
+account.setBackground(new java.awt.Color(27,53,85));
+account.setForeground(new java.awt.Color(255,255,255));
+brandLabel.setForeground(new java.awt.Color(255,255,255));
+pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables

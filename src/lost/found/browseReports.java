@@ -93,7 +93,7 @@ claimButton = new javax.swing.JButton(); claimButton.setText("Claim / Contact Fi
         setResizable(false);
         leftPanel = new javax.swing.JPanel();
         leftPanel.setPreferredSize(new java.awt.Dimension(230, 620));
-        leftPanel.setBackground(new java.awt.Color(228, 228, 228));
+        
 
         brandLabel = new javax.swing.JLabel();
         brandLabel.setText("CampusFind");
@@ -262,7 +262,20 @@ claimButton = new javax.swing.JButton(); claimButton.setText("Claim / Contact Fi
             .addGroup(layout.createSequentialGroup().addGap(0, 0, 0).addComponent(contentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE).addGap(0, 0, Short.MAX_VALUE))
         );
 
-        pack();
+        leftPanel.setBackground(new java.awt.Color(15,35,61));
+leftPanel.setForeground(new java.awt.Color(255,255,255));
+navDashboardButton.setBackground(new java.awt.Color(27,53,85));
+navDashboardButton.setForeground(new java.awt.Color(255,255,255));
+navBrowseButton.setBackground(new java.awt.Color(27,53,85));
+navBrowseButton.setForeground(new java.awt.Color(255,255,255));
+navMatchingButton.setBackground(new java.awt.Color(27,53,85));
+navMatchingButton.setForeground(new java.awt.Color(255,255,255));
+navAccountButton.setBackground(new java.awt.Color(27,53,85));
+navAccountButton.setForeground(new java.awt.Color(255,255,255));
+returnedButton.setBackground(new java.awt.Color(27,53,85));
+returnedButton.setForeground(new java.awt.Color(255,255,255));
+brandLabel.setForeground(new java.awt.Color(255,255,255));
+pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

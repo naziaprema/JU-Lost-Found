@@ -157,7 +157,7 @@ ClaimActions.openMatch(this,
         details.setWrapStyleWord(true);
         detailsScrollPane.setViewportView(details);
 
-        leftPanel.setBackground(new java.awt.Color(228, 228, 228));
+        
 
         javax.swing.GroupLayout leftPanelLayout = new javax.swing.GroupLayout(leftPanel);
         leftPanel.setLayout(leftPanelLayout);
@@ -284,7 +284,20 @@ ClaimActions.openMatch(this,
             
         );
 
-        pack();
+        leftPanel.setBackground(new java.awt.Color(15,35,61));
+leftPanel.setForeground(new java.awt.Color(255,255,255));
+home.setBackground(new java.awt.Color(27,53,85));
+home.setForeground(new java.awt.Color(255,255,255));
+browse.setBackground(new java.awt.Color(27,53,85));
+browse.setForeground(new java.awt.Color(255,255,255));
+matching.setBackground(new java.awt.Color(27,53,85));
+matching.setForeground(new java.awt.Color(255,255,255));
+account.setBackground(new java.awt.Color(27,53,85));
+account.setForeground(new java.awt.Color(255,255,255));
+claimButton.setBackground(new java.awt.Color(27,53,85));
+claimButton.setForeground(new java.awt.Color(255,255,255));
+brand.setForeground(new java.awt.Color(255,255,255));
+pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables

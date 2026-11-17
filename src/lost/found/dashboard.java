@@ -11,9 +11,8 @@ public class dashboard extends javax.swing.JFrame {
     private void messagesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_messagesButtonActionPerformed
 new messages().setVisible(true); dispose();
 }//GEN-LAST:event_messagesButtonActionPerformed
-// <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-messagesButton = new javax.swing.JButton(); messagesButton.setText("Messages / Claims"); messagesButton.addActionListener(this::messagesButtonActionPerformed);
 
         leftPanel = new javax.swing.JPanel();
         brandLabel = new javax.swing.JLabel();
@@ -21,6 +20,7 @@ messagesButton = new javax.swing.JButton(); messagesButton.setText("Messages / C
         navBrowseButton = new javax.swing.JButton();
         navMatchingButton = new javax.swing.JButton();
         navAccountButton = new javax.swing.JButton();
+        messagesButton = new javax.swing.JButton();
         contentPanel = new javax.swing.JPanel();
         headingLabel = new javax.swing.JLabel();
         welcomeLabel = new javax.swing.JLabel();
@@ -33,8 +33,8 @@ messagesButton = new javax.swing.JButton(); messagesButton.setText("Messages / C
         setTitle("CampusFind - Dashboard");
         setResizable(false);
 
-        leftPanel.setBackground(new java.awt.Color(228, 228, 228));
-        leftPanel.setForeground(new java.awt.Color(0, 0, 153));
+        
+        
         leftPanel.setPreferredSize(new java.awt.Dimension(230, 620));
 
         brandLabel.setBackground(new java.awt.Color(0, 0, 0));
@@ -42,7 +42,6 @@ messagesButton = new javax.swing.JButton(); messagesButton.setText("Messages / C
         brandLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         brandLabel.setText("CampusFind");
 
-        navDashboardButton.setBackground(new java.awt.Color(102, 204, 255));
         navDashboardButton.setText("Dashboard");
         navDashboardButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -50,7 +49,6 @@ messagesButton = new javax.swing.JButton(); messagesButton.setText("Messages / C
             }
         });
 
-        navBrowseButton.setBackground(new java.awt.Color(102, 204, 255));
         navBrowseButton.setText("Browse Reports");
         navBrowseButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -58,7 +56,6 @@ messagesButton = new javax.swing.JButton(); messagesButton.setText("Messages / C
             }
         });
 
-        navMatchingButton.setBackground(new java.awt.Color(102, 204, 255));
         navMatchingButton.setText("Matching Reports");
         navMatchingButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -66,7 +63,6 @@ messagesButton = new javax.swing.JButton(); messagesButton.setText("Messages / C
             }
         });
 
-        navAccountButton.setBackground(new java.awt.Color(102, 204, 255));
         navAccountButton.setText("Account Data");
         navAccountButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,10 +70,17 @@ messagesButton = new javax.swing.JButton(); messagesButton.setText("Messages / C
             }
         });
 
+        messagesButton.setText("Messages / Claims");
+        messagesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                messagesButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout leftPanelLayout = new javax.swing.GroupLayout(leftPanel);
         leftPanel.setLayout(leftPanelLayout);
         leftPanelLayout.setHorizontalGroup(
-            leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(leftPanelLayout.createSequentialGroup().addGap(15,15,15).addComponent(messagesButton,200,200,200).addGap(15,15,Short.MAX_VALUE))
+            leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(leftPanelLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addGroup(leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -85,23 +88,29 @@ messagesButton = new javax.swing.JButton(); messagesButton.setText("Messages / C
                     .addComponent(navDashboardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(navBrowseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(navMatchingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(navAccountButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(navAccountButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(messagesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(15, 29, Short.MAX_VALUE))
         );
         leftPanelLayout.setVerticalGroup(
-            leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(leftPanelLayout.createSequentialGroup().addGap(420,420,420).addComponent(messagesButton,45,45,45).addGap(155,155,Short.MAX_VALUE))
+            leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(leftPanelLayout.createSequentialGroup()
-                .addGap(74, 74, 74)
-                .addComponent(brandLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(66, 66, 66)
-                .addComponent(navDashboardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15)
-                .addComponent(navBrowseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15)
-                .addComponent(navMatchingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15)
-                .addComponent(navAccountButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(leftPanelLayout.createSequentialGroup()
+                        .addGap(74, 74, 74)
+                        .addComponent(brandLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(66, 66, 66)
+                        .addComponent(navDashboardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(15, 15, 15)
+                        .addComponent(navBrowseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(15, 15, 15)
+                        .addComponent(navMatchingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(15, 15, 15)
+                        .addComponent(navAccountButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(leftPanelLayout.createSequentialGroup()
+                        .addGap(420, 420, 420)
+                        .addComponent(messagesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(155, Short.MAX_VALUE))
         );
 
         contentPanel.setPreferredSize(new java.awt.Dimension(530, 620));
@@ -209,7 +218,20 @@ messagesButton = new javax.swing.JButton(); messagesButton.setText("Messages / C
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        pack();
+        leftPanel.setBackground(new java.awt.Color(15,35,61));
+leftPanel.setForeground(new java.awt.Color(255,255,255));
+navDashboardButton.setBackground(new java.awt.Color(27,53,85));
+navDashboardButton.setForeground(new java.awt.Color(255,255,255));
+navBrowseButton.setBackground(new java.awt.Color(27,53,85));
+navBrowseButton.setForeground(new java.awt.Color(255,255,255));
+navMatchingButton.setBackground(new java.awt.Color(27,53,85));
+navMatchingButton.setForeground(new java.awt.Color(255,255,255));
+navAccountButton.setBackground(new java.awt.Color(27,53,85));
+navAccountButton.setForeground(new java.awt.Color(255,255,255));
+messagesButton.setBackground(new java.awt.Color(27,53,85));
+messagesButton.setForeground(new java.awt.Color(255,255,255));
+brandLabel.setForeground(new java.awt.Color(255,255,255));
+pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -253,13 +275,13 @@ messagesButton = new javax.swing.JButton(); messagesButton.setText("Messages / C
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-private javax.swing.JButton messagesButton;
     private javax.swing.JLabel brandLabel;
     private javax.swing.JButton browseButton;
     private javax.swing.JPanel contentPanel;
     private javax.swing.JLabel headingLabel;
     private javax.swing.JPanel leftPanel;
     private javax.swing.JButton matchingButton;
+    private javax.swing.JButton messagesButton;
     private javax.swing.JButton navAccountButton;
     private javax.swing.JButton navBrowseButton;
     private javax.swing.JButton navDashboardButton;
