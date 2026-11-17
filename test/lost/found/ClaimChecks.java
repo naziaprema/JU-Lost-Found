@@ -18,6 +18,7 @@ public final class ClaimChecks {
         catch(IllegalArgumentException ex) { checks++; }
     }
     public static void main(String[] args) throws Exception {
+        if (!Features.MESSAGING_ENABLED) { System.out.println("SKIP: messaging GUI deferred for presentation; run DemoChecks instead."); return; }
         Path data=Files.createTempDirectory(Path.of("build"),"claim-check-");
         System.setProperty("campusfind.data.dir",data.toString());
         AccountStore accounts=new AccountStore(data);

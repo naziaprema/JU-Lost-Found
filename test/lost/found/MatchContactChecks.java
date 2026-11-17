@@ -17,6 +17,7 @@ public final class MatchContactChecks {
         try{action.run();throw new AssertionError("Expected rejection");}catch(IllegalArgumentException expected){}
     }
     public static void main(String[] args)throws Exception{
+        if (!Features.MESSAGING_ENABLED) { System.out.println("SKIP: messaging GUI deferred for presentation; run DemoChecks instead."); return; }
         Path data=Files.createTempDirectory(Path.of("build"),"match-contact-check-");
         System.setProperty("campusfind.data.dir",data.toString());
         AccountStore accounts=new AccountStore(data);
