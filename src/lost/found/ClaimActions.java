@@ -5,6 +5,29 @@ import javax.swing.*;
 /** Shared claim action for Browse Reports and Matching Reports. */
 public final class ClaimActions {
     private ClaimActions() {}
+    public static void openMatch(JFrame parent, ReportStore.Report source,
+            ReportStore.Report matched, JButton button) {
+        AccountStore.Account user=Session.current();
+        if(user==null){JOptionPane.showMessageDialog(parent,"Please log in to message a reporter.");return;}
+        if(source==null || matched==null){JOptionPane.showMessageDialog(parent,"Select a report and a match first.");return;}
+        button.setEnabled(false);
+        new SwingWorker<ClaimStore.Conversation,Void>(){
+            protected ClaimStore.Conversation doInBackground() throws Exception {
+                return new ClaimStore().contactMatch(source.id(),matched.id(),user);
+            }
+            protected void done(){
+                button.setEnabled(true);
+                try{
+                    ClaimStore.Conversation conversation=get();
+                    if(!user.equals(Session.current()) || !parent.isDisplayable())return;
+                    new messages(conversation.id()).setVisible(true);parent.dispose();
+                }catch(Exception ex){
+                    Throwable cause=ex.getCause()==null?ex:ex.getCause();
+                    JOptionPane.showMessageDialog(parent,cause.getMessage(),"Cannot open conversation",JOptionPane.WARNING_MESSAGE);
+                }
+            }
+        }.execute();
+    }
     public static void open(JFrame parent, ReportStore.Report report, JButton button) {
         AccountStore.Account user=Session.current();
         if(user==null){JOptionPane.showMessageDialog(parent,"Please log in to claim an item.");return;}

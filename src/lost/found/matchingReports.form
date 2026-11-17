@@ -77,23 +77,20 @@
               <EmptySpace min="260" pref="260" max="260" attributes="0" />
               <Component id="detailsScrollPane" min="-2" pref="470" max="-2" attributes="0" />
             </Group>
-            <Group type="102" attributes="0">
-              <EmptySpace min="260" pref="260" max="260" attributes="0" />
-              <Component id="note" min="-2" pref="470" max="-2" attributes="0" />
-            </Group>
             <Component id="leftPanel" min="-2" max="-2" attributes="0" />
+            <Group type="102" attributes="0">
+              <EmptySpace min="15" pref="15" max="-2" attributes="0" />
+              <Group type="103" groupAlignment="0" attributes="0">
+                <Component id="claimButton" min="-2" pref="200" max="-2" attributes="0" />
+              </Group>
+            </Group>
           </Group>
           <EmptySpace pref="30" max="32767" attributes="0" />
         </Group>
         <Group type="102" attributes="0">
-          <EmptySpace min="15" pref="15" max="15" attributes="0" />
-          <Component id="claimButton" min="-2" pref="200" max="-2" attributes="0" />
-          <EmptySpace min="545" pref="545" max="32767" attributes="0" />
-        </Group>
-        <Group type="102" attributes="0">
-          <EmptySpace min="15" pref="15" max="15" attributes="0" />
-          <Component id="messagesButton" min="-2" pref="200" max="-2" attributes="0" />
-          <EmptySpace min="545" pref="545" max="32767" attributes="0" />
+          <EmptySpace min="260" pref="260" max="260" attributes="0" />
+          <Component id="messagesButton" min="-2" pref="220" max="-2" attributes="0" />
+          <EmptySpace min="280" pref="280" max="32767" attributes="0" />
         </Group>
       </Group>
     </DimensionLayout>
@@ -151,20 +148,18 @@
           <EmptySpace min="305" pref="305" max="305" attributes="0" />
           <Component id="detailsScrollPane" min="-2" pref="250" max="-2" attributes="0" />
         </Group>
-        <Group type="102" attributes="0">
-          <EmptySpace min="575" pref="575" max="575" attributes="0" />
-          <Component id="note" min="-2" pref="25" max="-2" attributes="0" />
-        </Group>
         <Component id="leftPanel" min="-2" max="-2" attributes="0" />
         <Group type="102" attributes="0">
           <EmptySpace min="435" pref="435" max="435" attributes="0" />
           <Component id="claimButton" min="-2" pref="40" max="-2" attributes="0" />
-          <EmptySpace min="145" pref="145" max="32767" attributes="0" />
         </Group>
         <Group type="102" attributes="0">
           <EmptySpace min="490" pref="490" max="490" attributes="0" />
-          <Component id="messagesButton" min="-2" pref="40" max="-2" attributes="0" />
-          <EmptySpace min="90" pref="90" max="32767" attributes="0" />
+        </Group>
+        <Group type="102" attributes="0">
+          <EmptySpace min="575" pref="575" max="575" attributes="0" />
+          <Component id="messagesButton" min="-2" pref="30" max="-2" attributes="0" />
+          <EmptySpace min="15" pref="15" max="32767" attributes="0" />
         </Group>
       </Group>
     </DimensionLayout>
@@ -270,11 +265,6 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JLabel" name="note">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Similarity scores do not confirm ownership." />
-      </Properties>
-    </Component>
     <Container class="javax.swing.JPanel" name="leftPanel">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -304,7 +294,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="messagesButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Messages" />
+        <Property name="text" type="java.lang.String" value="Message Selected Match" />
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="messagesButtonActionPerformed" />

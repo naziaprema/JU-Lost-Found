@@ -67,6 +67,34 @@ public final class ClaimStore {
         }
     }
 
+    /** Contact the other participant directly from a persisted lost/found match. */
+    public Conversation contactMatch(String sourceId, String matchedId, AccountStore.Account user) throws IOException {
+        requireAccount(user);
+        List<ReportStore.Report> reports = new ReportStore(data).loadAll().reports();
+        ReportStore.Report source = reports.stream().filter(r -> r.id().equals(sourceId)).findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("Refresh Matching Reports and choose a report."));
+        ReportStore.Report matched = reports.stream().filter(r -> r.id().equals(matchedId)).findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("This matched report is unavailable. Please refresh."));
+        if (new MatchingEngine().findMatches(source, List.of(matched)).isEmpty())
+            throw new IllegalArgumentException("These reports are no longer an active match. Please refresh.");
+        ReportStore.Report found = "Found".equals(source.type()) ? source : matched;
+        ReportStore.Report lost = "Lost".equals(source.type()) ? source : matched;
+        // A person looking at a found result can contact its finder without owning the source report.
+        if (!user.id().equals(found.authorId())) {
+            if ("Lost".equals(matched.type()) && !user.id().equals(lost.authorId()))
+                throw new IllegalArgumentException("Select your own found report to contact a lost-item reporter.");
+            return claim(found.id(), user);
+        }
+        // Finders may also initiate the same conversation with the matched lost-report author.
+        if (lost.authorId().isBlank())
+            throw new IllegalArgumentException("This older lost report has no linked account to contact.");
+        if (user.id().equals(lost.authorId()))
+            throw new IllegalArgumentException("Both reports belong to you.");
+        AccountStore.Account owner = new AccountStore(data).findById(lost.authorId())
+                .orElseThrow(() -> new IllegalArgumentException("The matched reporter's account is unavailable."));
+        return claim(found.id(), owner);
+    }
+
     public List<Conversation> list(AccountStore.Account user) throws IOException {
         requireAccount(user);
         if (!Files.exists(claims)) return List.of();

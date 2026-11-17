@@ -192,10 +192,6 @@
                           <EmptySpace min="280" pref="280" max="280" attributes="0"/>
                           <Component id="refreshButton" min="-2" pref="220" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="30" pref="30" max="30" attributes="0"/>
-                          <Component id="statusLabel" min="-2" pref="470" max="-2" attributes="0"/>
-                      </Group>
                   </Group>
                   <EmptySpace min="30" max="32767" attributes="0"/>
               </Group>
@@ -237,12 +233,8 @@
                           <EmptySpace min="530" pref="530" max="530" attributes="0"/>
                           <Component id="refreshButton" min="-2" pref="35" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="580" pref="580" max="580" attributes="0"/>
-                          <Component id="statusLabel" min="-2" pref="25" max="-2" attributes="0"/>
-                      </Group>
                   </Group>
-                  <EmptySpace pref="15" max="32767" attributes="0"/>
+                  <EmptySpace pref="55" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -317,11 +309,6 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="refreshButtonActionPerformed"/>
           </Events>
-        </Component>
-        <Component class="javax.swing.JLabel" name="statusLabel">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Loading conversations..."/>
-          </Properties>
         </Component>
       </SubComponents>
     </Container>

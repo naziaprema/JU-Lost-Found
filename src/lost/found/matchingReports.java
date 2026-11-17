@@ -56,12 +56,14 @@ if(loaded.skippedFiles()>0)status.setText(status.getText()+" Skipped "+loaded.sk
 int index=results.getSelectedIndex(); ClaimActions.open(this,index>=0 && index<matches.size()?matches.get(index).report():null,claimButton);
 }//GEN-LAST:event_claimButtonActionPerformed
 private void messagesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_messagesButtonActionPerformed
-new messages().setVisible(true); dispose();
+int sourceIndex=source.getSelectedIndex(),matchIndex=results.getSelectedIndex();
+ClaimActions.openMatch(this,
+    sourceIndex>=0 && sourceIndex<reports.size()?reports.get(sourceIndex):null,
+    matchIndex>=0 && matchIndex<matches.size()?matches.get(matchIndex).report():null,
+    messagesButton);
 }//GEN-LAST:event_messagesButtonActionPerformed
-// <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-messagesButton = new javax.swing.JButton(); messagesButton.setText("Messages"); messagesButton.addActionListener(this::messagesButtonActionPerformed);
-claimButton = new javax.swing.JButton(); claimButton.setText("Claim / Contact Finder"); claimButton.addActionListener(this::claimButtonActionPerformed);
 
         brand = new javax.swing.JLabel();
         home = new javax.swing.JButton();
@@ -77,15 +79,16 @@ claimButton = new javax.swing.JButton(); claimButton.setText("Claim / Contact Fi
         results = new javax.swing.JComboBox();
         detailsScrollPane = new javax.swing.JScrollPane();
         details = new javax.swing.JTextArea();
-        note = new javax.swing.JLabel();
         leftPanel = new javax.swing.JPanel();
+        claimButton = new javax.swing.JButton();
+        messagesButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CampusFind - Matching Reports");
         setResizable(false);
 
-        brand.setText("CampusFind");
         brand.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        brand.setText("CampusFind");
 
         home.setText("Dashboard");
         home.addActionListener(new java.awt.event.ActionListener() {
@@ -115,8 +118,8 @@ claimButton = new javax.swing.JButton(); claimButton.setText("Claim / Contact Fi
             }
         });
 
-        heading.setText("Find Matching Reports");
         heading.setFont(new java.awt.Font("Segoe UI", 1, 26)); // NOI18N
+        heading.setText("Find Matching Reports");
 
         sourceLabel.setText("Choose a lost or found report");
 
@@ -154,8 +157,6 @@ claimButton = new javax.swing.JButton(); claimButton.setText("Claim / Contact Fi
         details.setWrapStyleWord(true);
         detailsScrollPane.setViewportView(details);
 
-        note.setText("Similarity scores do not confirm ownership.");
-
         leftPanel.setBackground(new java.awt.Color(228, 228, 228));
 
         javax.swing.GroupLayout leftPanelLayout = new javax.swing.GroupLayout(leftPanel);
@@ -169,10 +170,24 @@ claimButton = new javax.swing.JButton(); claimButton.setText("Claim / Contact Fi
             .addGap(0, 620, Short.MAX_VALUE)
         );
 
+        claimButton.setText("Claim / Contact Finder");
+        claimButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                claimButtonActionPerformed(evt);
+            }
+        });
+
+        messagesButton.setText("Message Selected Match");
+        messagesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                messagesButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(layout.createSequentialGroup().addGap(15,15,15).addComponent(messagesButton,200,200,200).addGap(545,545,Short.MAX_VALUE)).addGroup(layout.createSequentialGroup().addGap(15,15,15).addComponent(claimButton,200,200,200).addGap(545,545,Short.MAX_VALUE))
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(layout.createSequentialGroup().addGap(260,260,260).addComponent(messagesButton,220,220,220).addGap(280,280,Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -214,14 +229,15 @@ claimButton = new javax.swing.JButton(); claimButton.setText("Claim / Contact Fi
                     .addGroup(layout.createSequentialGroup()
                         .addGap(260, 260, 260)
                         .addComponent(detailsScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(leftPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(260, 260, 260)
-                        .addComponent(note, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(leftPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(15, 15, 15)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(claimButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(layout.createSequentialGroup().addGap(490,490,490).addComponent(messagesButton,40,40,40).addGap(90,90,Short.MAX_VALUE)).addGroup(layout.createSequentialGroup().addGap(435,435,435).addComponent(claimButton,40,40,40).addGap(145,145,Short.MAX_VALUE))
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(layout.createSequentialGroup().addGap(575,575,575).addComponent(messagesButton,30,30,30).addGap(15,15,Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(60, 60, 60)
                 .addComponent(brand, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -261,21 +277,21 @@ claimButton = new javax.swing.JButton(); claimButton.setText("Claim / Contact Fi
             .addGroup(layout.createSequentialGroup()
                 .addGap(305, 305, 305)
                 .addComponent(detailsScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(575, 575, 575)
-                .addComponent(note, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addComponent(leftPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(435, 435, 435)
+                .addComponent(claimButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+            
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
-private javax.swing.JButton messagesButton;
-private javax.swing.JButton claimButton;
     private javax.swing.JButton account;
     private javax.swing.JLabel brand;
     private javax.swing.JButton browse;
+    private javax.swing.JButton claimButton;
     private javax.swing.JTextArea details;
     private javax.swing.JScrollPane detailsScrollPane;
     private javax.swing.JButton find;
@@ -283,7 +299,7 @@ private javax.swing.JButton claimButton;
     private javax.swing.JButton home;
     private javax.swing.JPanel leftPanel;
     private javax.swing.JButton matching;
-    private javax.swing.JLabel note;
+    private javax.swing.JButton messagesButton;
     private javax.swing.JButton refresh;
     private javax.swing.JComboBox results;
     private javax.swing.JComboBox source;

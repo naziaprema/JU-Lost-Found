@@ -17,7 +17,7 @@ public class messages extends javax.swing.JFrame {
         user=Session.current();
         preferredId=conversationId;
         pollTimer=new javax.swing.Timer(3000, e -> refreshInbox());
-        if(user==null) { statusLabel.setText("Log in to view your claims and messages.");sendButton.setEnabled(false); }
+        if(user==null) { historyArea.setText("Log in to view your claims and messages.");sendButton.setEnabled(false); }
         else { refreshInbox();pollTimer.start(); }
     }
     @Override public void dispose() { if(pollTimer!=null)pollTimer.stop();super.dispose(); }
@@ -71,11 +71,11 @@ public class messages extends javax.swing.JFrame {
                     }
                     String rendered=text.length()==0?(selected<0?"No conversations yet. Claim a found report to start.":"No messages yet. Introduce yourself to discuss the item."):text.toString();
                     if(!historyArea.getText().equals(rendered)) { historyArea.setText(rendered);historyArea.setCaretPosition(historyArea.getDocument().getLength()); }
-                    statusLabel.setText(conversations.isEmpty()?"No claims yet.":conversations.size()+" conversation(s). Refreshes every 3 seconds.");
+                    historyScrollPane.setToolTipText(conversations.isEmpty()?"No claims yet.":conversations.size()+" conversation(s). Refreshes every 3 seconds.");
                     if(selected>=0) { ClaimStore.Conversation c=conversations.get(selected);historyArea.setToolTipText("Report: "+c.reportId()); }
                 } catch(Exception ex) {
-                    statusLabel.setText("Could not read messages. Use Refresh to retry.");
-                    statusLabel.setToolTipText(errorMessage(ex));
+                    historyScrollPane.setToolTipText("Could not read messages. Use Refresh to retry.");
+                    historyArea.setToolTipText(errorMessage(ex));
                 } finally { filling=false;setBusy(false); }
             }
         }.execute();
@@ -139,7 +139,6 @@ public class messages extends javax.swing.JFrame {
         composeArea = new javax.swing.JTextArea();
         sendButton = new javax.swing.JButton();
         refreshButton = new javax.swing.JButton();
-        statusLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CampusFind - Messages");
@@ -253,8 +252,6 @@ public class messages extends javax.swing.JFrame {
             }
         });
 
-        statusLabel.setText("Loading conversations...");
-
         javax.swing.GroupLayout contentPanelLayout = new javax.swing.GroupLayout(contentPanel);
         contentPanel.setLayout(contentPanelLayout);
         contentPanelLayout.setHorizontalGroup(
@@ -284,10 +281,7 @@ public class messages extends javax.swing.JFrame {
                         .addComponent(sendButton, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(contentPanelLayout.createSequentialGroup()
                         .addGap(280, 280, 280)
-                        .addComponent(refreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(contentPanelLayout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(statusLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(refreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         contentPanelLayout.setVerticalGroup(
@@ -317,11 +311,8 @@ public class messages extends javax.swing.JFrame {
                         .addComponent(sendButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(contentPanelLayout.createSequentialGroup()
                         .addGap(530, 530, 530)
-                        .addComponent(refreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(contentPanelLayout.createSequentialGroup()
-                        .addGap(580, 580, 580)
-                        .addComponent(statusLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(15, Short.MAX_VALUE))
+                        .addComponent(refreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -364,7 +355,6 @@ public class messages extends javax.swing.JFrame {
     private javax.swing.JButton matching;
     private javax.swing.JButton refreshButton;
     private javax.swing.JButton sendButton;
-    private javax.swing.JLabel statusLabel;
     private javax.swing.JLabel threadLabel;
     private javax.swing.JComboBox threadsComboBox;
     // End of variables declaration//GEN-END:variables
