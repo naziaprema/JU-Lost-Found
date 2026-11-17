@@ -356,11 +356,13 @@ public class reportForm extends javax.swing.JFrame {
             return;
         }
         final String location = (String) locationComboBox.getSelectedItem();
+        final AccountStore.Account author = Session.current();
+        if (author == null) { JOptionPane.showMessageDialog(this, "Please log in before submitting a report."); return; }
         final Path photo = selectedPhoto;
         setSaving(true);
         new javax.swing.SwingWorker<Path, Void>() {
             @Override protected Path doInBackground() throws Exception {
-                return new ReportStore().save(type, name, category, description, location, date, photo);
+                return new ReportStore().save(type, name, category, description, location, date, photo, author);
             }
 
             @Override protected void done() {
@@ -401,11 +403,11 @@ public class reportForm extends javax.swing.JFrame {
     }//GEN-LAST:event_navBrowseButtonActionPerformed
 
     private void navMatchingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navMatchingButtonActionPerformed
-        JOptionPane.showMessageDialog(this, "Matching Reports will be added after Browse Reports.");
+        new matchingReports().setVisible(true); dispose();
     }//GEN-LAST:event_navMatchingButtonActionPerformed
 
     private void navAccountButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navAccountButtonActionPerformed
-        JOptionPane.showMessageDialog(this, "Account data screen will be added later.");
+        new accountData().setVisible(true); dispose();
     }//GEN-LAST:event_navAccountButtonActionPerformed
 
     private void returnToDashboard() {

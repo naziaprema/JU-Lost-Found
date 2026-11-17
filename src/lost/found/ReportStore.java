@@ -15,6 +15,8 @@ import javax.imageio.ImageIO;
 
 /** Stores each report as a UTF-8 .txt file, with an optional copied photo. */
 public final class ReportStore {
+    // Claim creation and return updates share this lock and the same process-level file lock.
+    static final Object STATE_LOCK = new Object();
     private final Path dataDirectory;
 
     public ReportStore() {
@@ -28,7 +30,14 @@ public final class ReportStore {
     /** A report loaded from one of the existing text files. */
     public record Report(String id, String type, String itemName, String category,
             String description, String location, LocalDate date, String createdAt,
-            String status, String photo) {
+            String status, String photo, String authorId, String authorName) {
+        /** Older reports remain readable but cannot identify a finder for messaging. */
+        public Report(String id, String type, String itemName, String category,
+                String description, String location, LocalDate date, String createdAt,
+                String status, String photo) {
+            this(id, type, itemName, category, description, location, date, createdAt,
+                    status, photo, "", "");
+        }
         public boolean matches(String query, String typeFilter) {
             if (!"All".equals(typeFilter) && !type.equals(typeFilter)) return false;
             String text = String.join(" ", itemName, category, description, location, type, date.toString());
@@ -64,7 +73,8 @@ public final class ReportStore {
                             values.getProperty("description"), values.getProperty("location"),
                             LocalDate.parse(values.getProperty("date")),
                             values.getProperty("createdAt", ""), values.getProperty("status", "Active"),
-                            values.getProperty("photo", "")));
+                            values.getProperty("photo", ""), values.getProperty("authorId", ""),
+                            values.getProperty("authorName", "")));
                 } catch (IOException | IllegalArgumentException | java.time.DateTimeException ex) {
                     skipped++;
                 }
@@ -74,6 +84,47 @@ public final class ReportStore {
                 .thenComparing(Report::createdAt, java.util.Comparator.reverseOrder())
                 .thenComparing(Report::id));
         return new LoadResult(java.util.List.copyOf(reports), skipped);
+    }
+
+    /** Only the registered finder can finish an active found report. */
+    public void markReturned(String reportId, AccountStore.Account finder) throws IOException {
+        if (finder == null) throw new IllegalArgumentException("Please log in first.");
+        AccountStore.Account saved = new AccountStore(dataDirectory).findById(finder.id())
+                .orElseThrow(() -> new IllegalArgumentException("Please log in with a registered account."));
+        if (!saved.equals(finder)) throw new IllegalArgumentException("Please log in again.");
+        if (reportId == null || !reportId.matches("[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"))
+            throw new IllegalArgumentException("Invalid report ID.");
+        synchronized (STATE_LOCK) {
+            Path claims = dataDirectory.resolve("claims");
+            Files.createDirectories(claims);
+            try (var channel = java.nio.channels.FileChannel.open(claims.resolve(".write.lock"),
+                    java.nio.file.StandardOpenOption.CREATE, java.nio.file.StandardOpenOption.WRITE);
+                    var lock = channel.lock()) {
+                Path file = dataDirectory.resolve("reports").resolve(reportId + ".txt");
+                if (!Files.isRegularFile(file, java.nio.file.LinkOption.NOFOLLOW_LINKS))
+                    throw new IllegalArgumentException("This report is unavailable.");
+                Properties values = new Properties();
+                try (var reader = Files.newBufferedReader(file, StandardCharsets.UTF_8)) { values.load(reader); }
+                if (!reportId.equals(values.getProperty("id")) || !"Found".equals(values.getProperty("type")))
+                    throw new IllegalArgumentException("Only found reports can be marked as returned.");
+                if (!finder.id().equals(values.getProperty("authorId")))
+                    throw new IllegalArgumentException("Only the finder who submitted this report can mark it as returned.");
+                if ("Returned".equals(values.getProperty("status"))) return;
+                if (!"Active".equalsIgnoreCase(values.getProperty("status", "Active")))
+                    throw new IllegalArgumentException("This report is no longer active.");
+                values.setProperty("status", "Returned");
+                values.setProperty("returnedAt", java.time.Instant.now().toString());
+                values.setProperty("returnedBy", finder.id());
+                Path temporary = Files.createTempFile(file.getParent(), "return-", ".tmp");
+                try {
+                    try (var writer = Files.newBufferedWriter(temporary, StandardCharsets.UTF_8)) {
+                        values.store(writer, "CampusFind report");
+                    }
+                    try { Files.move(temporary, file, StandardCopyOption.ATOMIC_MOVE, StandardCopyOption.REPLACE_EXISTING); }
+                    catch (AtomicMoveNotSupportedException ex) { Files.move(temporary, file, StandardCopyOption.REPLACE_EXISTING); }
+                } finally { Files.deleteIfExists(temporary); }
+            }
+        }
     }
 
     /** Only use photos stored in this application's image folder. */
@@ -90,6 +141,11 @@ public final class ReportStore {
 
     public Path save(String type, String itemName, String category, String description,
             String location, LocalDate date, Path photo) throws IOException {
+        return save(type, itemName, category, description, location, date, photo, null);
+    }
+
+    public Path save(String type, String itemName, String category, String description,
+            String location, LocalDate date, Path photo, AccountStore.Account author) throws IOException {
         if (!"Lost".equals(type) && !"Found".equals(type)) {
             throw new IllegalArgumentException("Select Lost or Found as the report type.");
         }
@@ -146,6 +202,10 @@ public final class ReportStore {
             values.setProperty("createdAt", LocalDateTime.now().toString());
             values.setProperty("photo", relativePhoto);
             values.setProperty("status", "Active");
+            if (author != null) {
+                values.setProperty("authorId", author.id());
+                values.setProperty("authorName", author.fullName());
+            }
             temporaryFile = Files.createTempFile(reportsDirectory, "report-", ".tmp");
             try (Writer writer = Files.newBufferedWriter(temporaryFile, StandardCharsets.UTF_8)) {
                 values.store(writer, "CampusFind report");

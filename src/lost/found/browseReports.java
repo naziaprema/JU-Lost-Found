@@ -18,6 +18,7 @@ public class browseReports extends javax.swing.JFrame {
     private TableRowSorter<DefaultTableModel> sorter;
     private int skippedFiles;
     private ReportStore.Report selectedReport;
+    private boolean returning;
     private SwingWorker<ImageIcon, Void> photoWorker;
 
     public browseReports() {
@@ -47,8 +48,46 @@ public class browseReports extends javax.swing.JFrame {
     }
 
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void claimButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_claimButtonActionPerformed
+ClaimActions.open(this, selectedReport, claimButton);
+}//GEN-LAST:event_claimButtonActionPerformed
+private void messagesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_messagesButtonActionPerformed
+new messages().setVisible(true); dispose();
+}//GEN-LAST:event_messagesButtonActionPerformed
+    private void returnedButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnedButtonActionPerformed
+        ReportStore.Report report=selectedReport;
+        AccountStore.Account finder=Session.current();
+        if(returning || report==null || finder==null)return;
+        returning=true;returnedButton.setEnabled(false);
+        new SwingWorker<Void,Void>() {
+            protected Void doInBackground() throws Exception {
+                store.markReturned(report.id(),finder);return null;
+            }
+            protected void done() {
+                returning=false;
+                if(!isDisplayable())return;
+                try{get();returnedButton.setEnabled(false);loadReports();}
+                catch(Exception ex){
+                    updateReturnButton();
+                    Throwable cause=ex.getCause()==null?ex:ex.getCause();
+                    JOptionPane.showMessageDialog(browseReports.this,cause.getMessage(),"Could not mark as returned",JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        }.execute();
+    }//GEN-LAST:event_returnedButtonActionPerformed
+
+    private void updateReturnButton() {
+        AccountStore.Account finder=Session.current();
+        returnedButton.setEnabled(!returning && finder!=null && selectedReport!=null
+                && "Found".equals(selectedReport.type())
+                && "Active".equalsIgnoreCase(selectedReport.status())
+                && finder.id().equals(selectedReport.authorId()));
+    }
+// <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+returnedButton=new javax.swing.JButton();returnedButton.setText("Mark as Returned");returnedButton.setEnabled(false);returnedButton.addActionListener(this::returnedButtonActionPerformed);
+messagesButton = new javax.swing.JButton(); messagesButton.setText("Messages"); messagesButton.addActionListener(this::messagesButtonActionPerformed);
+claimButton = new javax.swing.JButton(); claimButton.setText("Claim / Contact Finder"); claimButton.addActionListener(this::claimButtonActionPerformed);
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CampusFind - Browse Reports");
         setResizable(false);
@@ -164,14 +203,14 @@ public class browseReports extends javax.swing.JFrame {
 
         javax.swing.GroupLayout leftPanelLayout = new javax.swing.GroupLayout(leftPanel);
         leftPanel.setLayout(leftPanelLayout);
-        leftPanelLayout.setHorizontalGroup(leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        leftPanelLayout.setHorizontalGroup(leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(leftPanelLayout.createSequentialGroup().addGap(15,15,15).addComponent(returnedButton,200,200,200).addGap(15,15,Short.MAX_VALUE))
             .addGroup(leftPanelLayout.createSequentialGroup().addGap(15, 15, 15).addComponent(brandLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE).addGap(15, 15, Short.MAX_VALUE))
             .addGroup(leftPanelLayout.createSequentialGroup().addGap(15, 15, 15).addComponent(navDashboardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE).addGap(15, 15, Short.MAX_VALUE))
             .addGroup(leftPanelLayout.createSequentialGroup().addGap(15, 15, 15).addComponent(navBrowseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE).addGap(15, 15, Short.MAX_VALUE))
             .addGroup(leftPanelLayout.createSequentialGroup().addGap(15, 15, 15).addComponent(navMatchingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE).addGap(15, 15, Short.MAX_VALUE))
             .addGroup(leftPanelLayout.createSequentialGroup().addGap(15, 15, 15).addComponent(navAccountButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE).addGap(15, 15, Short.MAX_VALUE))
         );
-        leftPanelLayout.setVerticalGroup(leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        leftPanelLayout.setVerticalGroup(leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(leftPanelLayout.createSequentialGroup().addGap(420,420,420).addComponent(returnedButton,45,45,45).addGap(155,155,Short.MAX_VALUE))
             .addGroup(leftPanelLayout.createSequentialGroup().addGap(60, 60, 60).addComponent(brandLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE).addGap(520, 520, Short.MAX_VALUE))
             .addGroup(leftPanelLayout.createSequentialGroup().addGap(180, 180, 180).addComponent(navDashboardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE).addGap(395, 395, Short.MAX_VALUE))
             .addGroup(leftPanelLayout.createSequentialGroup().addGap(240, 240, 240).addComponent(navBrowseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE).addGap(335, 335, Short.MAX_VALUE))
@@ -185,7 +224,7 @@ public class browseReports extends javax.swing.JFrame {
 
         javax.swing.GroupLayout contentPanelLayout = new javax.swing.GroupLayout(contentPanel);
         contentPanel.setLayout(contentPanelLayout);
-        contentPanelLayout.setHorizontalGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        contentPanelLayout.setHorizontalGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(contentPanelLayout.createSequentialGroup().addGap(365,365,365).addComponent(messagesButton,135,135,135).addGap(30,30,Short.MAX_VALUE)).addGroup(contentPanelLayout.createSequentialGroup().addGap(155,155,155).addComponent(claimButton,195,195,195).addGap(180,180,Short.MAX_VALUE))
             .addGroup(contentPanelLayout.createSequentialGroup().addGap(30, 30, 30).addComponent(headingLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE).addGap(30, 30, Short.MAX_VALUE))
             .addGroup(contentPanelLayout.createSequentialGroup().addGap(30, 30, 30).addComponent(searchLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE).addGap(445, 445, Short.MAX_VALUE))
             .addGroup(contentPanelLayout.createSequentialGroup().addGap(90, 90, 90).addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE).addGap(195, 195, Short.MAX_VALUE))
@@ -198,7 +237,7 @@ public class browseReports extends javax.swing.JFrame {
             .addGroup(contentPanelLayout.createSequentialGroup().addGap(360, 360, 360).addComponent(photoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE).addGap(30, 30, Short.MAX_VALUE))
             .addGroup(contentPanelLayout.createSequentialGroup().addGap(30, 30, 30).addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE).addGap(390, 390, Short.MAX_VALUE))
         );
-        contentPanelLayout.setVerticalGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        contentPanelLayout.setVerticalGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(contentPanelLayout.createSequentialGroup().addGap(568,568,568).addComponent(messagesButton,32,32,32).addGap(20,20,Short.MAX_VALUE)).addGroup(contentPanelLayout.createSequentialGroup().addGap(568,568,568).addComponent(claimButton,32,32,32).addGap(20,20,Short.MAX_VALUE))
             .addGroup(contentPanelLayout.createSequentialGroup().addGap(22, 22, 22).addComponent(headingLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE).addGap(560, 560, Short.MAX_VALUE))
             .addGroup(contentPanelLayout.createSequentialGroup().addGap(80, 80, 80).addComponent(searchLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE).addGap(518, 518, Short.MAX_VALUE))
             .addGroup(contentPanelLayout.createSequentialGroup().addGap(75, 75, 75).addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE).addGap(515, 515, Short.MAX_VALUE))
@@ -229,6 +268,7 @@ public class browseReports extends javax.swing.JFrame {
 
     private void loadReports() {
         if (!refreshButton.isEnabled()) return;
+        final String previousId=selectedReport==null?null:selectedReport.id();
         refreshButton.setEnabled(false);
         countLabel.setText("Loading reports...");
         new SwingWorker<ReportStore.LoadResult, Void>() {
@@ -250,6 +290,13 @@ public class browseReports extends javax.swing.JFrame {
                             report.location(), report.date().toString()});
                     }
                     applyFilters();
+                    if(previousId!=null) for(int i=0;i<loadedReports.size();i++) {
+                        if(loadedReports.get(i).id().equals(previousId)) {
+                            int view=reportsTable.convertRowIndexToView(i);
+                            if(view>=0)reportsTable.setRowSelectionInterval(view,view);
+                            break;
+                        }
+                    }
                 } catch (InterruptedException ex) {
                     Thread.currentThread().interrupt();
                     showLoadError();
@@ -295,6 +342,7 @@ public class browseReports extends javax.swing.JFrame {
         photoLabel.setIcon(null);
         photoLabel.setText("No photo");
         selectedReport = null;
+        updateReturnButton();
         int selected = reportsTable.getSelectedRow();
         if (selected < 0) {
             detailsArea.setText("Select a report to view its details.");
@@ -304,6 +352,7 @@ public class browseReports extends javax.swing.JFrame {
         if (row >= loadedReports.size()) return;
         ReportStore.Report report = loadedReports.get(row);
         selectedReport = report;
+        updateReturnButton();
         detailsArea.setText("Item: " + report.itemName()
                 + "\nType: " + report.type()
                 + "\nCategory: " + report.category()
@@ -376,11 +425,11 @@ public class browseReports extends javax.swing.JFrame {
     }//GEN-LAST:event_navBrowseButtonActionPerformed
 
     private void navMatchingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navMatchingButtonActionPerformed
-        JOptionPane.showMessageDialog(this, "Matching Reports will be added next.");
+        new matchingReports().setVisible(true); dispose();
     }//GEN-LAST:event_navMatchingButtonActionPerformed
 
     private void navAccountButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navAccountButtonActionPerformed
-        JOptionPane.showMessageDialog(this, "Account data screen will be added later.");
+        new accountData().setVisible(true); dispose();
     }//GEN-LAST:event_navAccountButtonActionPerformed
 
     private void returnToDashboard() {
@@ -393,6 +442,9 @@ public class browseReports extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+private javax.swing.JButton returnedButton;
+private javax.swing.JButton messagesButton;
+private javax.swing.JButton claimButton;
     private javax.swing.JPanel leftPanel;
     private javax.swing.JLabel brandLabel;
     private javax.swing.JButton navDashboardButton;

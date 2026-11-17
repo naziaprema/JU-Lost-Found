@@ -8,8 +8,12 @@ public class dashboard extends javax.swing.JFrame {
     }
 
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void messagesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_messagesButtonActionPerformed
+new messages().setVisible(true); dispose();
+}//GEN-LAST:event_messagesButtonActionPerformed
+// <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+messagesButton = new javax.swing.JButton(); messagesButton.setText("Messages / Claims"); messagesButton.addActionListener(this::messagesButtonActionPerformed);
 
         leftPanel = new javax.swing.JPanel();
         brandLabel = new javax.swing.JLabel();
@@ -73,7 +77,7 @@ public class dashboard extends javax.swing.JFrame {
         javax.swing.GroupLayout leftPanelLayout = new javax.swing.GroupLayout(leftPanel);
         leftPanel.setLayout(leftPanelLayout);
         leftPanelLayout.setHorizontalGroup(
-            leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(leftPanelLayout.createSequentialGroup().addGap(15,15,15).addComponent(messagesButton,200,200,200).addGap(15,15,Short.MAX_VALUE))
             .addGroup(leftPanelLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addGroup(leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -85,7 +89,7 @@ public class dashboard extends javax.swing.JFrame {
                 .addGap(15, 29, Short.MAX_VALUE))
         );
         leftPanelLayout.setVerticalGroup(
-            leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(leftPanelLayout.createSequentialGroup().addGap(420,420,420).addComponent(messagesButton,45,45,45).addGap(155,155,Short.MAX_VALUE))
             .addGroup(leftPanelLayout.createSequentialGroup()
                 .addGap(74, 74, 74)
                 .addComponent(brandLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -225,7 +229,7 @@ public class dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_browseButtonActionPerformed
 
     private void matchingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matchingButtonActionPerformed
-        javax.swing.JOptionPane.showMessageDialog(this, "Matching screen will be added next.");
+        new matchingReports().setVisible(true); dispose();
     }//GEN-LAST:event_matchingButtonActionPerformed
 
     private void navDashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navDashboardButtonActionPerformed
@@ -241,7 +245,7 @@ public class dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_navMatchingButtonActionPerformed
 
     private void navAccountButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navAccountButtonActionPerformed
-        javax.swing.JOptionPane.showMessageDialog(this, "Account data screen will be added next.");
+        new accountData().setVisible(true); dispose();
     }//GEN-LAST:event_navAccountButtonActionPerformed
 
     public static void main(String[] args) {
@@ -249,6 +253,7 @@ public class dashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+private javax.swing.JButton messagesButton;
     private javax.swing.JLabel brandLabel;
     private javax.swing.JButton browseButton;
     private javax.swing.JPanel contentPanel;

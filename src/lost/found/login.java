@@ -100,18 +100,27 @@ layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Align
 
 pack();setLocationRelativeTo(null);
 }// </editor-fold>//GEN-END:initComponents
-private void showActionPerformed(java.awt.event.ActionEvent evt){password.setEchoChar(show.isSelected()?(char)0:echo);show.setText(show.isSelected()?"Hide":"Show");}
-private void submitActionPerformed(java.awt.event.ActionEvent evt){
-char[] secret=password.getPassword();boolean empty=email.getText().trim().isEmpty()||secret.length==0;java.util.Arrays.fill(secret,'\0');
-if (empty) {
-    javax.swing.JOptionPane.showMessageDialog(this, "Please enter your email or student ID and password.", "Missing details", javax.swing.JOptionPane.WARNING_MESSAGE);
-    return;
+private void showActionPerformed(java.awt.event.ActionEvent evt){//GEN-FIRST:event_showActionPerformed
+password.setEchoChar(show.isSelected()?(char)0:echo);show.setText(show.isSelected()?"Hide":"Show");}//GEN-LAST:event_showActionPerformed
+private void submitActionPerformed(java.awt.event.ActionEvent evt){//GEN-FIRST:event_submitActionPerformed
+
+char[] secret=password.getPassword();String identifier=email.getText().trim();
+if(identifier.isEmpty()||secret.length==0){java.util.Arrays.fill(secret,'\0');javax.swing.JOptionPane.showMessageDialog(this,"Enter your email or student ID and password.");return;}
+submit.setEnabled(false);register.setEnabled(false);
+new javax.swing.SwingWorker<java.util.Optional<AccountStore.Account>,Void>(){
+protected java.util.Optional<AccountStore.Account> doInBackground() throws Exception{
+try{return new AccountStore().authenticate(identifier,secret);}finally{java.util.Arrays.fill(secret,'\0');}
 }
-javax.swing.JOptionPane.showMessageDialog(this, "Opening the dashboard preview. Account verification will be added with file storage.", "Dashboard preview", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-new dashboard().setVisible(true);
-dispose();
+protected void done(){submit.setEnabled(true);register.setEnabled(true);password.setText("");
+try{java.util.Optional<AccountStore.Account> user=get();if(user.isEmpty()){javax.swing.JOptionPane.showMessageDialog(login.this,"Incorrect email/student ID or password.");return;}
+Session.signIn(user.get());new dashboard().setVisible(true);dispose();
+}catch(Exception ex){javax.swing.JOptionPane.showMessageDialog(login.this,"Could not read account files. "+(ex.getCause()==null?ex.getMessage():ex.getCause().getMessage()));}
 }
-private void registerActionPerformed(java.awt.event.ActionEvent evt){javax.swing.JOptionPane.showMessageDialog(this,"The registration screen will be added next.");}
+}.execute();
+}//GEN-LAST:event_submitActionPerformed
+public void setIdentifier(String identifier){email.setText(identifier);}
+private void registerActionPerformed(java.awt.event.ActionEvent evt){//GEN-FIRST:event_registerActionPerformed
+new createAccount().setVisible(true);dispose();}//GEN-LAST:event_registerActionPerformed
 public static void main(String[] args){java.awt.EventQueue.invokeLater(()->new login().setVisible(true));}
 // Variables declaration - do not modify//GEN-BEGIN:variables
 private javax.swing.JLabel brand;
