@@ -77,7 +77,7 @@ After building, compile test/lost/found/FeatureChecks.java with build/classes on
 1. Sign in as the finder and submit a Found report. New reports save the signed-in author's ID and name.
 2. Sign in as another account, open Browse Reports, select that Found report, and click **Claim / Contact Finder**. The same button is available for found results in Matching Reports.
 3. A conversation opens with the finder. Type a message and press **Send**.
-4. The finder opens **Messages / Claims** from the dashboard or Account Data (or **Messages** in Browse/Matching), selects the claim, and replies.
+4. The finder opens **Messages / Claims** from the dashboard or Account Data (or **Messages** in Browse), selects the claim, and replies.
 5. Conversations refresh every three seconds while open. **Refresh** also checks immediately. Replies and drafts are kept separate; sending supports up to 2,000 characters.
 
 A claim starts a discussion; it does not automatically prove ownership, close the report, or award the item. Each claimant has a separate conversation with the finder. Repeated claims by the same account reopen the existing conversation. The app checks participants before reading or sending messages. Users cannot claim their own reports or start new claims on lost/closed reports.
@@ -99,3 +99,9 @@ The report text file keeps its original details and photo reference, and saves s
 Returned reports stay in Browse Reports for reference. They are excluded from new matches and new claims. Existing claim conversations remain readable and can still receive replies. Use Refresh in an already-open Browse/Matching page to load the latest report status.
 
 ReturnChecks covers the complete two-account journey: report, match, claim, two-way messages, finder-only return, persisted status, exclusion from matches/new claims, and continued conversation access. It also checks the GUI button and concurrent claim/return handling using temporary data under build/. Run test/lost/found/ReturnChecks.java in the same way as the other feature checks.
+
+## Contact a selected match
+
+On Matching Reports, choose a source report and a suggested result, then click **Message Selected Match**. This opens the specific conversation immediately instead of the general inbox. A lost-item owner can contact the finder; a finder selecting their own Found report can contact the matched Lost report's author. Both directions reuse the same conversation. No message is sent until you type one and press Send. Older lost reports without an account link cannot receive direct contact from a finder. Returned or otherwise inactive report pairs are rejected after reloading their latest saved state.
+
+MatchContactChecks verifies both contact directions, conversation reuse, invalid/stale pairs, and that the GUI button opens the selected conversation.
