@@ -48,13 +48,7 @@ public class browseReports extends javax.swing.JFrame {
     }
 
     @SuppressWarnings("unchecked")
-    private void claimButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_claimButtonActionPerformed
-ClaimActions.open(this, selectedReport, claimButton);
-}//GEN-LAST:event_claimButtonActionPerformed
-private void messagesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_messagesButtonActionPerformed
-new messages().setVisible(true); dispose();
-}//GEN-LAST:event_messagesButtonActionPerformed
-    private void returnedButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnedButtonActionPerformed
+        private void returnedButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnedButtonActionPerformed
         ReportStore.Report report=selectedReport;
         AccountStore.Account finder=Session.current();
         if(returning || report==null || finder==null)return;
@@ -83,24 +77,48 @@ new messages().setVisible(true); dispose();
                 && "Active".equalsIgnoreCase(selectedReport.status())
                 && finder.id().equals(selectedReport.authorId()));
     }
-// <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-returnedButton=new javax.swing.JButton();returnedButton.setText("Mark as Returned");returnedButton.setEnabled(false);returnedButton.addActionListener(this::returnedButtonActionPerformed);
-messagesButton = new javax.swing.JButton(); messagesButton.setText("Messages"); messagesButton.addActionListener(this::messagesButtonActionPerformed);
-claimButton = new javax.swing.JButton(); claimButton.setText("Claim / Contact Finder"); claimButton.addActionListener(this::claimButtonActionPerformed);
+
+        leftPanel = new javax.swing.JPanel();
+        brandLabel = new javax.swing.JLabel();
+        navDashboardButton = new javax.swing.JButton();
+        navBrowseButton = new javax.swing.JButton();
+        navMatchingButton = new javax.swing.JButton();
+        navAccountButton = new javax.swing.JButton();
+        returnedButton = new javax.swing.JButton();
+        contentPanel = new javax.swing.JPanel();
+        headingLabel = new javax.swing.JLabel();
+        searchLabel = new javax.swing.JLabel();
+        searchField = new javax.swing.JTextField();
+        typeFilterComboBox = new javax.swing.JComboBox();
+        reportsScrollPane = new javax.swing.JScrollPane();
+        reportsTable = new javax.swing.JTable();
+        countLabel = new javax.swing.JLabel();
+        refreshButton = new javax.swing.JButton();
+        detailsLabel = new javax.swing.JLabel();
+        detailsScrollPane = new javax.swing.JScrollPane();
+        detailsArea = new javax.swing.JTextArea();
+        photoLabel = new javax.swing.JLabel();
+        backButton = new javax.swing.JButton();
+        
+        
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CampusFind - Browse Reports");
         setResizable(false);
-        leftPanel = new javax.swing.JPanel();
+
+        leftPanel.setBackground(new java.awt.Color(15, 35, 61));
+        leftPanel.setForeground(new java.awt.Color(255, 255, 255));
         leftPanel.setPreferredSize(new java.awt.Dimension(230, 620));
-        
 
-        brandLabel = new javax.swing.JLabel();
+        brandLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        brandLabel.setForeground(new java.awt.Color(255, 255, 255));
+        brandLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         brandLabel.setText("CampusFind");
-        brandLabel.setFont(new java.awt.Font("Segoe UI", 1, 24));
-        brandLabel.setHorizontalAlignment(0);
 
-        navDashboardButton = new javax.swing.JButton();
+        navDashboardButton.setBackground(new java.awt.Color(27, 53, 85));
+        navDashboardButton.setForeground(new java.awt.Color(255, 255, 255));
         navDashboardButton.setText("Dashboard");
         navDashboardButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,7 +126,8 @@ claimButton = new javax.swing.JButton(); claimButton.setText("Claim / Contact Fi
             }
         });
 
-        navBrowseButton = new javax.swing.JButton();
+        navBrowseButton.setBackground(new java.awt.Color(27, 53, 85));
+        navBrowseButton.setForeground(new java.awt.Color(255, 255, 255));
         navBrowseButton.setText("Browse Reports");
         navBrowseButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,7 +135,8 @@ claimButton = new javax.swing.JButton(); claimButton.setText("Claim / Contact Fi
             }
         });
 
-        navMatchingButton = new javax.swing.JButton();
+        navMatchingButton.setBackground(new java.awt.Color(27, 53, 85));
+        navMatchingButton.setForeground(new java.awt.Color(255, 255, 255));
         navMatchingButton.setText("Matching Reports");
         navMatchingButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,7 +144,8 @@ claimButton = new javax.swing.JButton(); claimButton.setText("Claim / Contact Fi
             }
         });
 
-        navAccountButton = new javax.swing.JButton();
+        navAccountButton.setBackground(new java.awt.Color(27, 53, 85));
+        navAccountButton.setForeground(new java.awt.Color(255, 255, 255));
         navAccountButton.setText("Account Data");
         navAccountButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -132,41 +153,101 @@ claimButton = new javax.swing.JButton(); claimButton.setText("Claim / Contact Fi
             }
         });
 
-        contentPanel = new javax.swing.JPanel();
+        returnedButton.setBackground(new java.awt.Color(27, 53, 85));
+        returnedButton.setForeground(new java.awt.Color(255, 255, 255));
+        returnedButton.setText("Mark as Returned");
+        returnedButton.setEnabled(false);
+        returnedButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                returnedButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout leftPanelLayout = new javax.swing.GroupLayout(leftPanel);
+        leftPanel.setLayout(leftPanelLayout);
+        leftPanelLayout.setHorizontalGroup(
+            leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(leftPanelLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(brandLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(navDashboardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(navBrowseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(navMatchingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(navAccountButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(returnedButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        leftPanelLayout.setVerticalGroup(
+            leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(leftPanelLayout.createSequentialGroup()
+                .addGroup(leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(leftPanelLayout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(brandLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(leftPanelLayout.createSequentialGroup()
+                        .addGap(180, 180, 180)
+                        .addComponent(navDashboardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(leftPanelLayout.createSequentialGroup()
+                        .addGap(240, 240, 240)
+                        .addComponent(navBrowseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(leftPanelLayout.createSequentialGroup()
+                        .addGap(300, 300, 300)
+                        .addComponent(navMatchingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(leftPanelLayout.createSequentialGroup()
+                        .addGap(360, 360, 360)
+                        .addComponent(navAccountButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(leftPanelLayout.createSequentialGroup()
+                        .addGap(420, 420, 420)
+                        .addComponent(returnedButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(155, Short.MAX_VALUE))
+        );
+
         contentPanel.setPreferredSize(new java.awt.Dimension(530, 620));
 
-        headingLabel = new javax.swing.JLabel();
+        headingLabel.setFont(new java.awt.Font("Segoe UI", 1, 26)); // NOI18N
         headingLabel.setText("Browse Reports");
-        headingLabel.setFont(new java.awt.Font("Segoe UI", 1, 26));
 
-        searchLabel = new javax.swing.JLabel();
         searchLabel.setText("Search");
 
-        searchField = new javax.swing.JTextField();
         searchField.setToolTipText("Search item names, categories, descriptions or locations");
 
-        typeFilterComboBox = new javax.swing.JComboBox<>();
-        typeFilterComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"All", "Lost", "Found"}));
+        typeFilterComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "All", "Lost", "Found" }));
         typeFilterComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 typeFilterComboBoxActionPerformed(evt);
             }
         });
 
-        reportsScrollPane = new javax.swing.JScrollPane();
+        reportsTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
 
-        reportsTable = new javax.swing.JTable();
-        reportsTable.setModel(new javax.swing.table.DefaultTableModel(new Object[][] {},
-                new String[] {"Item", "Type", "Category", "Location", "Date"}) {
-            @Override public boolean isCellEditable(int row, int column) { return false; }
+            },
+            new String [] {
+                "Item", "Type", "Category", "Location", "Date"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
         });
         reportsTable.setRowHeight(26);
         reportsTable.setAutoCreateRowSorter(true);
+        reportsScrollPane.setViewportView(reportsTable);
 
-        countLabel = new javax.swing.JLabel();
         countLabel.setText("No saved reports yet.");
 
-        refreshButton = new javax.swing.JButton();
         refreshButton.setText("Refresh");
         refreshButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -174,26 +255,21 @@ claimButton = new javax.swing.JButton(); claimButton.setText("Claim / Contact Fi
             }
         });
 
-        detailsLabel = new javax.swing.JLabel();
+        detailsLabel.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         detailsLabel.setText("Selected report");
-        detailsLabel.setFont(new java.awt.Font("Segoe UI", 1, 16));
 
-        detailsScrollPane = new javax.swing.JScrollPane();
-
-        detailsArea = new javax.swing.JTextArea();
         detailsArea.setText("Select a report to view its details.");
         detailsArea.setEditable(false);
         detailsArea.setColumns(20);
         detailsArea.setRows(5);
         detailsArea.setLineWrap(true);
         detailsArea.setWrapStyleWord(true);
+        detailsScrollPane.setViewportView(detailsArea);
 
-        photoLabel = new javax.swing.JLabel();
+        photoLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         photoLabel.setText("No photo");
-        photoLabel.setHorizontalAlignment(0);
         photoLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(187, 187, 187)));
 
-        backButton = new javax.swing.JButton();
         backButton.setText("Back");
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -201,81 +277,127 @@ claimButton = new javax.swing.JButton(); claimButton.setText("Claim / Contact Fi
             }
         });
 
-        javax.swing.GroupLayout leftPanelLayout = new javax.swing.GroupLayout(leftPanel);
-        leftPanel.setLayout(leftPanelLayout);
-        leftPanelLayout.setHorizontalGroup(leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(leftPanelLayout.createSequentialGroup().addGap(15,15,15).addComponent(returnedButton,200,200,200).addGap(15,15,Short.MAX_VALUE))
-            .addGroup(leftPanelLayout.createSequentialGroup().addGap(15, 15, 15).addComponent(brandLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE).addGap(15, 15, Short.MAX_VALUE))
-            .addGroup(leftPanelLayout.createSequentialGroup().addGap(15, 15, 15).addComponent(navDashboardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE).addGap(15, 15, Short.MAX_VALUE))
-            .addGroup(leftPanelLayout.createSequentialGroup().addGap(15, 15, 15).addComponent(navBrowseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE).addGap(15, 15, Short.MAX_VALUE))
-            .addGroup(leftPanelLayout.createSequentialGroup().addGap(15, 15, 15).addComponent(navMatchingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE).addGap(15, 15, Short.MAX_VALUE))
-            .addGroup(leftPanelLayout.createSequentialGroup().addGap(15, 15, 15).addComponent(navAccountButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE).addGap(15, 15, Short.MAX_VALUE))
-        );
-        leftPanelLayout.setVerticalGroup(leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(leftPanelLayout.createSequentialGroup().addGap(420,420,420).addComponent(returnedButton,45,45,45).addGap(155,155,Short.MAX_VALUE))
-            .addGroup(leftPanelLayout.createSequentialGroup().addGap(60, 60, 60).addComponent(brandLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE).addGap(520, 520, Short.MAX_VALUE))
-            .addGroup(leftPanelLayout.createSequentialGroup().addGap(180, 180, 180).addComponent(navDashboardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE).addGap(395, 395, Short.MAX_VALUE))
-            .addGroup(leftPanelLayout.createSequentialGroup().addGap(240, 240, 240).addComponent(navBrowseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE).addGap(335, 335, Short.MAX_VALUE))
-            .addGroup(leftPanelLayout.createSequentialGroup().addGap(300, 300, 300).addComponent(navMatchingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE).addGap(275, 275, Short.MAX_VALUE))
-            .addGroup(leftPanelLayout.createSequentialGroup().addGap(360, 360, 360).addComponent(navAccountButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE).addGap(215, 215, Short.MAX_VALUE))
-        );
+        
+        
 
-        reportsScrollPane.setViewportView(reportsTable);
-
-        detailsScrollPane.setViewportView(detailsArea);
+        
+        
 
         javax.swing.GroupLayout contentPanelLayout = new javax.swing.GroupLayout(contentPanel);
         contentPanel.setLayout(contentPanelLayout);
-        contentPanelLayout.setHorizontalGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(contentPanelLayout.createSequentialGroup().addGap(365,365,365).addComponent(messagesButton,135,135,135).addGap(30,30,Short.MAX_VALUE)).addGroup(contentPanelLayout.createSequentialGroup().addGap(155,155,155).addComponent(claimButton,195,195,195).addGap(180,180,Short.MAX_VALUE))
-            .addGroup(contentPanelLayout.createSequentialGroup().addGap(30, 30, 30).addComponent(headingLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE).addGap(30, 30, Short.MAX_VALUE))
-            .addGroup(contentPanelLayout.createSequentialGroup().addGap(30, 30, 30).addComponent(searchLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE).addGap(445, 445, Short.MAX_VALUE))
-            .addGroup(contentPanelLayout.createSequentialGroup().addGap(90, 90, 90).addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE).addGap(195, 195, Short.MAX_VALUE))
-            .addGroup(contentPanelLayout.createSequentialGroup().addGap(350, 350, 350).addComponent(typeFilterComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE).addGap(30, 30, Short.MAX_VALUE))
-            .addGroup(contentPanelLayout.createSequentialGroup().addGap(30, 30, 30).addComponent(reportsScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE).addGap(30, 30, Short.MAX_VALUE))
-            .addGroup(contentPanelLayout.createSequentialGroup().addGap(30, 30, 30).addComponent(countLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE).addGap(155, 155, Short.MAX_VALUE))
-            .addGroup(contentPanelLayout.createSequentialGroup().addGap(390, 390, 390).addComponent(refreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE).addGap(30, 30, Short.MAX_VALUE))
-            .addGroup(contentPanelLayout.createSequentialGroup().addGap(30, 30, 30).addComponent(detailsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE).addGap(30, 30, Short.MAX_VALUE))
-            .addGroup(contentPanelLayout.createSequentialGroup().addGap(30, 30, 30).addComponent(detailsScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE).addGap(190, 190, Short.MAX_VALUE))
-            .addGroup(contentPanelLayout.createSequentialGroup().addGap(360, 360, 360).addComponent(photoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE).addGap(30, 30, Short.MAX_VALUE))
-            .addGroup(contentPanelLayout.createSequentialGroup().addGap(30, 30, 30).addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE).addGap(390, 390, Short.MAX_VALUE))
+        contentPanelLayout.setHorizontalGroup(
+            contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contentPanelLayout.createSequentialGroup()
+                .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(contentPanelLayout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(headingLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(contentPanelLayout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(searchLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(contentPanelLayout.createSequentialGroup()
+                        .addGap(90, 90, 90)
+                        .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(contentPanelLayout.createSequentialGroup()
+                        .addGap(350, 350, 350)
+                        .addComponent(typeFilterComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(contentPanelLayout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(reportsScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(contentPanelLayout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(countLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(contentPanelLayout.createSequentialGroup()
+                        .addGap(390, 390, 390)
+                        .addComponent(refreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(contentPanelLayout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(detailsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(contentPanelLayout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(detailsScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(contentPanelLayout.createSequentialGroup()
+                        .addGap(360, 360, 360)
+                        .addComponent(photoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(contentPanelLayout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(contentPanelLayout.createSequentialGroup()
+                        .addGap(155, 155, 155)
+                        )
+                    .addGroup(contentPanelLayout.createSequentialGroup()
+                        .addGap(365, 365, 365)
+                        ))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        contentPanelLayout.setVerticalGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(contentPanelLayout.createSequentialGroup().addGap(568,568,568).addComponent(messagesButton,32,32,32).addGap(20,20,Short.MAX_VALUE)).addGroup(contentPanelLayout.createSequentialGroup().addGap(568,568,568).addComponent(claimButton,32,32,32).addGap(20,20,Short.MAX_VALUE))
-            .addGroup(contentPanelLayout.createSequentialGroup().addGap(22, 22, 22).addComponent(headingLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE).addGap(560, 560, Short.MAX_VALUE))
-            .addGroup(contentPanelLayout.createSequentialGroup().addGap(80, 80, 80).addComponent(searchLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE).addGap(518, 518, Short.MAX_VALUE))
-            .addGroup(contentPanelLayout.createSequentialGroup().addGap(75, 75, 75).addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE).addGap(515, 515, Short.MAX_VALUE))
-            .addGroup(contentPanelLayout.createSequentialGroup().addGap(75, 75, 75).addComponent(typeFilterComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE).addGap(515, 515, Short.MAX_VALUE))
-            .addGroup(contentPanelLayout.createSequentialGroup().addGap(125, 125, 125).addComponent(reportsScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE).addGap(285, 285, Short.MAX_VALUE))
-            .addGroup(contentPanelLayout.createSequentialGroup().addGap(346, 346, 346).addComponent(countLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE).addGap(250, 250, Short.MAX_VALUE))
-            .addGroup(contentPanelLayout.createSequentialGroup().addGap(342, 342, 342).addComponent(refreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE).addGap(248, 248, Short.MAX_VALUE))
-            .addGroup(contentPanelLayout.createSequentialGroup().addGap(384, 384, 384).addComponent(detailsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE).addGap(209, 209, Short.MAX_VALUE))
-            .addGroup(contentPanelLayout.createSequentialGroup().addGap(421, 421, 421).addComponent(detailsScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE).addGap(74, 74, Short.MAX_VALUE))
-            .addGroup(contentPanelLayout.createSequentialGroup().addGap(421, 421, 421).addComponent(photoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE).addGap(74, 74, Short.MAX_VALUE))
-            .addGroup(contentPanelLayout.createSequentialGroup().addGap(568, 568, 568).addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE).addGap(20, 20, Short.MAX_VALUE))
+        contentPanelLayout.setVerticalGroup(
+            contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contentPanelLayout.createSequentialGroup()
+                .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(contentPanelLayout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(headingLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(contentPanelLayout.createSequentialGroup()
+                        .addGap(80, 80, 80)
+                        .addComponent(searchLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(contentPanelLayout.createSequentialGroup()
+                        .addGap(75, 75, 75)
+                        .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(contentPanelLayout.createSequentialGroup()
+                        .addGap(75, 75, 75)
+                        .addComponent(typeFilterComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(contentPanelLayout.createSequentialGroup()
+                        .addGap(125, 125, 125)
+                        .addComponent(reportsScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(contentPanelLayout.createSequentialGroup()
+                        .addGap(346, 346, 346)
+                        .addComponent(countLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(contentPanelLayout.createSequentialGroup()
+                        .addGap(342, 342, 342)
+                        .addComponent(refreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(contentPanelLayout.createSequentialGroup()
+                        .addGap(384, 384, 384)
+                        .addComponent(detailsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(contentPanelLayout.createSequentialGroup()
+                        .addGap(421, 421, 421)
+                        .addComponent(detailsScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(contentPanelLayout.createSequentialGroup()
+                        .addGap(421, 421, 421)
+                        .addComponent(photoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(contentPanelLayout.createSequentialGroup()
+                        .addGap(568, 568, 568)
+                        .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(contentPanelLayout.createSequentialGroup()
+                        .addGap(568, 568, 568)
+                        )
+                    .addGroup(contentPanelLayout.createSequentialGroup()
+                        .addGap(568, 568, 568)
+                        ))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup().addGap(0, 0, 0).addComponent(leftPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE).addGap(530, 530, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup().addGap(230, 230, 230).addComponent(contentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE).addGap(0, 0, Short.MAX_VALUE))
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(leftPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(230, 230, 230)
+                .addComponent(contentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup().addGap(0, 0, 0).addComponent(leftPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE).addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup().addGap(0, 0, 0).addComponent(contentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE).addGap(0, 0, Short.MAX_VALUE))
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(leftPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(contentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        leftPanel.setBackground(new java.awt.Color(15,35,61));
-leftPanel.setForeground(new java.awt.Color(255,255,255));
-navDashboardButton.setBackground(new java.awt.Color(27,53,85));
-navDashboardButton.setForeground(new java.awt.Color(255,255,255));
-navBrowseButton.setBackground(new java.awt.Color(27,53,85));
-navBrowseButton.setForeground(new java.awt.Color(255,255,255));
-navMatchingButton.setBackground(new java.awt.Color(27,53,85));
-navMatchingButton.setForeground(new java.awt.Color(255,255,255));
-navAccountButton.setBackground(new java.awt.Color(27,53,85));
-navAccountButton.setForeground(new java.awt.Color(255,255,255));
-returnedButton.setBackground(new java.awt.Color(27,53,85));
-returnedButton.setForeground(new java.awt.Color(255,255,255));
-brandLabel.setForeground(new java.awt.Color(255,255,255));
-pack();
+        pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -455,28 +577,29 @@ pack();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-private javax.swing.JButton returnedButton;
-private javax.swing.JButton messagesButton;
-private javax.swing.JButton claimButton;
-    private javax.swing.JPanel leftPanel;
+    private javax.swing.JButton backButton;
     private javax.swing.JLabel brandLabel;
-    private javax.swing.JButton navDashboardButton;
-    private javax.swing.JButton navBrowseButton;
-    private javax.swing.JButton navMatchingButton;
-    private javax.swing.JButton navAccountButton;
+    
     private javax.swing.JPanel contentPanel;
-    private javax.swing.JLabel headingLabel;
-    private javax.swing.JLabel searchLabel;
-    private javax.swing.JTextField searchField;
-    private javax.swing.JComboBox<String> typeFilterComboBox;
-    private javax.swing.JScrollPane reportsScrollPane;
-    private javax.swing.JTable reportsTable;
     private javax.swing.JLabel countLabel;
-    private javax.swing.JButton refreshButton;
+    private javax.swing.JTextArea detailsArea;
     private javax.swing.JLabel detailsLabel;
     private javax.swing.JScrollPane detailsScrollPane;
-    private javax.swing.JTextArea detailsArea;
+    private javax.swing.JLabel headingLabel;
+    private javax.swing.JPanel leftPanel;
+    
+    private javax.swing.JButton navAccountButton;
+    private javax.swing.JButton navBrowseButton;
+    private javax.swing.JButton navDashboardButton;
+    private javax.swing.JButton navMatchingButton;
     private javax.swing.JLabel photoLabel;
-    private javax.swing.JButton backButton;
+    private javax.swing.JButton refreshButton;
+    private javax.swing.JScrollPane reportsScrollPane;
+    private javax.swing.JTable reportsTable;
+    private javax.swing.JButton returnedButton;
+    private javax.swing.JTextField searchField;
+    private javax.swing.JLabel searchLabel;
+    private javax.swing.JComboBox typeFilterComboBox;
     // End of variables declaration//GEN-END:variables
 }
+

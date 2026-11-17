@@ -8,10 +8,7 @@ public class dashboard extends javax.swing.JFrame {
     }
 
     @SuppressWarnings("unchecked")
-    private void messagesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_messagesButtonActionPerformed
-new messages().setVisible(true); dispose();
-}//GEN-LAST:event_messagesButtonActionPerformed
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+        // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         leftPanel = new javax.swing.JPanel();
@@ -20,7 +17,7 @@ new messages().setVisible(true); dispose();
         navBrowseButton = new javax.swing.JButton();
         navMatchingButton = new javax.swing.JButton();
         navAccountButton = new javax.swing.JButton();
-        messagesButton = new javax.swing.JButton();
+        
         contentPanel = new javax.swing.JPanel();
         headingLabel = new javax.swing.JLabel();
         welcomeLabel = new javax.swing.JLabel();
@@ -70,12 +67,8 @@ new messages().setVisible(true); dispose();
             }
         });
 
-        messagesButton.setText("Messages / Claims");
-        messagesButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                messagesButtonActionPerformed(evt);
-            }
-        });
+        
+        
 
         javax.swing.GroupLayout leftPanelLayout = new javax.swing.GroupLayout(leftPanel);
         leftPanel.setLayout(leftPanelLayout);
@@ -89,7 +82,7 @@ new messages().setVisible(true); dispose();
                     .addComponent(navBrowseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(navMatchingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(navAccountButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(messagesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    )
                 .addGap(15, 29, Short.MAX_VALUE))
         );
         leftPanelLayout.setVerticalGroup(
@@ -109,7 +102,7 @@ new messages().setVisible(true); dispose();
                         .addComponent(navAccountButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(leftPanelLayout.createSequentialGroup()
                         .addGap(420, 420, 420)
-                        .addComponent(messagesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        ))
                 .addContainerGap(155, Short.MAX_VALUE))
         );
 
@@ -228,8 +221,8 @@ navMatchingButton.setBackground(new java.awt.Color(27,53,85));
 navMatchingButton.setForeground(new java.awt.Color(255,255,255));
 navAccountButton.setBackground(new java.awt.Color(27,53,85));
 navAccountButton.setForeground(new java.awt.Color(255,255,255));
-messagesButton.setBackground(new java.awt.Color(27,53,85));
-messagesButton.setForeground(new java.awt.Color(255,255,255));
+
+
 brandLabel.setForeground(new java.awt.Color(255,255,255));
 pack();
         setLocationRelativeTo(null);
@@ -281,7 +274,7 @@ pack();
     private javax.swing.JLabel headingLabel;
     private javax.swing.JPanel leftPanel;
     private javax.swing.JButton matchingButton;
-    private javax.swing.JButton messagesButton;
+    
     private javax.swing.JButton navAccountButton;
     private javax.swing.JButton navBrowseButton;
     private javax.swing.JButton navDashboardButton;
@@ -291,3 +284,4 @@ pack();
     private javax.swing.JLabel welcomeLabel;
     // End of variables declaration//GEN-END:variables
 }
+

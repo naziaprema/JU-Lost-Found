@@ -52,17 +52,7 @@ if(loaded.skippedFiles()>0)status.setText(status.getText()+" Skipped "+loaded.sk
 }.execute();
 }
 
-    private void claimButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_claimButtonActionPerformed
-int index=results.getSelectedIndex(); ClaimActions.open(this,index>=0 && index<matches.size()?matches.get(index).report():null,claimButton);
-}//GEN-LAST:event_claimButtonActionPerformed
-private void messagesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_messagesButtonActionPerformed
-int sourceIndex=source.getSelectedIndex(),matchIndex=results.getSelectedIndex();
-ClaimActions.openMatch(this,
-    sourceIndex>=0 && sourceIndex<reports.size()?reports.get(sourceIndex):null,
-    matchIndex>=0 && matchIndex<matches.size()?matches.get(matchIndex).report():null,
-    messagesButton);
-}//GEN-LAST:event_messagesButtonActionPerformed
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+        // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         brand = new javax.swing.JLabel();
@@ -80,8 +70,8 @@ ClaimActions.openMatch(this,
         detailsScrollPane = new javax.swing.JScrollPane();
         details = new javax.swing.JTextArea();
         leftPanel = new javax.swing.JPanel();
-        claimButton = new javax.swing.JButton();
-        messagesButton = new javax.swing.JButton();
+        
+        
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CampusFind - Matching Reports");
@@ -170,24 +160,16 @@ ClaimActions.openMatch(this,
             .addGap(0, 620, Short.MAX_VALUE)
         );
 
-        claimButton.setText("Claim / Contact Finder");
-        claimButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                claimButtonActionPerformed(evt);
-            }
-        });
+        
+        
 
-        messagesButton.setText("Message Selected Match");
-        messagesButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                messagesButtonActionPerformed(evt);
-            }
-        });
+        
+        
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(layout.createSequentialGroup().addGap(260,260,260).addComponent(messagesButton,220,220,220).addGap(280,280,Short.MAX_VALUE))
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(layout.createSequentialGroup().addGap(260,260,260).addGap(280,280,Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -233,11 +215,11 @@ ClaimActions.openMatch(this,
                     .addGroup(layout.createSequentialGroup()
                         .addGap(15, 15, 15)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(claimButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            )))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(layout.createSequentialGroup().addGap(575,575,575).addComponent(messagesButton,30,30,30).addGap(15,15,Short.MAX_VALUE))
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(layout.createSequentialGroup().addGap(575,575,575).addGap(15,15,Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(60, 60, 60)
                 .addComponent(brand, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -280,7 +262,7 @@ ClaimActions.openMatch(this,
             .addComponent(leftPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(435, 435, 435)
-                .addComponent(claimButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                )
             
         );
 
@@ -294,8 +276,8 @@ matching.setBackground(new java.awt.Color(27,53,85));
 matching.setForeground(new java.awt.Color(255,255,255));
 account.setBackground(new java.awt.Color(27,53,85));
 account.setForeground(new java.awt.Color(255,255,255));
-claimButton.setBackground(new java.awt.Color(27,53,85));
-claimButton.setForeground(new java.awt.Color(255,255,255));
+
+
 brand.setForeground(new java.awt.Color(255,255,255));
 pack();
         setLocationRelativeTo(null);
@@ -304,7 +286,7 @@ pack();
     private javax.swing.JButton account;
     private javax.swing.JLabel brand;
     private javax.swing.JButton browse;
-    private javax.swing.JButton claimButton;
+    
     private javax.swing.JTextArea details;
     private javax.swing.JScrollPane detailsScrollPane;
     private javax.swing.JButton find;
@@ -312,7 +294,7 @@ pack();
     private javax.swing.JButton home;
     private javax.swing.JPanel leftPanel;
     private javax.swing.JButton matching;
-    private javax.swing.JButton messagesButton;
+    
     private javax.swing.JButton refresh;
     private javax.swing.JComboBox results;
     private javax.swing.JComboBox source;
@@ -321,3 +303,4 @@ pack();
     // End of variables declaration//GEN-END:variables
 public static void main(String[] args){java.awt.EventQueue.invokeLater(()->new matchingReports().setVisible(true));}
 }
+

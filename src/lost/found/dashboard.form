@@ -70,7 +70,6 @@
                 <Component id="navBrowseButton" min="-2" pref="200" max="-2" attributes="0" />
                 <Component id="navMatchingButton" min="-2" pref="200" max="-2" attributes="0" />
                 <Component id="navAccountButton" min="-2" pref="200" max="-2" attributes="0" />
-                <Component id="messagesButton" min="-2" pref="200" max="-2" attributes="0" />
               </Group>
               <EmptySpace min="15" pref="29" max="32767" attributes="0" />
             </Group>
@@ -94,7 +93,6 @@
                 </Group>
                 <Group type="102" attributes="0">
                   <EmptySpace min="420" pref="420" max="420" attributes="0" />
-                  <Component id="messagesButton" min="-2" pref="45" max="-2" attributes="0" />
                 </Group>
               </Group>
               <EmptySpace pref="155" max="32767" attributes="0" />
@@ -172,20 +170,6 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="navAccountButtonActionPerformed" />
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="messagesButton">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Messages / Claims" />
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color red="1b" green="35" blue="55" type="rgb" />
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color red="ff" green="ff" blue="ff" type="rgb" />
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="messagesButtonActionPerformed" />
           </Events>
         </Component>
       </SubComponents>

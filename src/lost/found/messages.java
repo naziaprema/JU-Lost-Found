@@ -17,10 +17,14 @@ public class messages extends javax.swing.JFrame {
         user=Session.current();
         preferredId=conversationId;
         pollTimer=new javax.swing.Timer(3000, e -> refreshInbox());
+        if (!Features.MESSAGING_ENABLED) return;
         if(user==null) { historyArea.setText("Log in to view your claims and messages.");sendButton.setEnabled(false); }
         else { refreshInbox();pollTimer.start(); }
     }
     @Override public void dispose() { if(pollTimer!=null)pollTimer.stop();super.dispose(); }
+    @Override public void setVisible(boolean visible) {
+        super.setVisible(visible && Features.MESSAGING_ENABLED);
+    }
     private void go(javax.swing.JFrame page) { page.setVisible(true);dispose(); }
     private boolean sameUser() { return user!=null && user.equals(Session.current()); }
     private String selectedId() {
@@ -369,5 +373,5 @@ pack();
     private javax.swing.JLabel threadLabel;
     private javax.swing.JComboBox threadsComboBox;
     // End of variables declaration//GEN-END:variables
-public static void main(String[] args){java.awt.EventQueue.invokeLater(()->new messages().setVisible(true));}
+public static void main(String[] args){java.awt.EventQueue.invokeLater(()->(Features.MESSAGING_ENABLED ? new messages() : new dashboard()).setVisible(true));}
 }

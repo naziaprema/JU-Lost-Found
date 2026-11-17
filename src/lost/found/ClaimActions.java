@@ -7,6 +7,7 @@ public final class ClaimActions {
     private ClaimActions() {}
     public static void openMatch(JFrame parent, ReportStore.Report source,
             ReportStore.Report matched, JButton button) {
+        if (!Features.MESSAGING_ENABLED) return;
         AccountStore.Account user=Session.current();
         if(user==null){JOptionPane.showMessageDialog(parent,"Please log in to message a reporter.");return;}
         if(source==null || matched==null){JOptionPane.showMessageDialog(parent,"Select a report and a match first.");return;}
@@ -29,6 +30,7 @@ public final class ClaimActions {
         }.execute();
     }
     public static void open(JFrame parent, ReportStore.Report report, JButton button) {
+        if (!Features.MESSAGING_ENABLED) return;
         AccountStore.Account user=Session.current();
         if(user==null){JOptionPane.showMessageDialog(parent,"Please log in to claim an item.");return;}
         if(report==null){JOptionPane.showMessageDialog(parent,"Select a found report first.");return;}

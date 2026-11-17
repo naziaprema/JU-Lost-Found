@@ -14,12 +14,9 @@ private void accountActionPerformed(java.awt.event.ActionEvent e){//GEN-FIRST:ev
 go(new accountData());}//GEN-LAST:event_accountActionPerformed
 private void logoutActionPerformed(java.awt.event.ActionEvent e){//GEN-FIRST:event_logoutActionPerformed
 Session.signOut();go(new login());}//GEN-LAST:event_logoutActionPerformed
-private void messagesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_messagesButtonActionPerformed
-new messages().setVisible(true); dispose();
-}//GEN-LAST:event_messagesButtonActionPerformed
 // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
 private void initComponents(){
-messagesButton = new javax.swing.JButton(); messagesButton.setText("Messages / Claims"); messagesButton.addActionListener(this::messagesButtonActionPerformed);
+  
 setDefaultCloseOperation(3);setTitle("CampusFind - Account Data");setResizable(false);
 brand=new javax.swing.JLabel();
 brand.setText("CampusFind");
@@ -48,7 +45,7 @@ logout.setText("Log Out / Log In");
 logout.addActionListener(this::logoutActionPerformed);
 heading.setFont(new java.awt.Font("Segoe UI",1,26));brand.setFont(new java.awt.Font("Segoe UI",1,24));leftPanel=new javax.swing.JPanel();
 javax.swing.GroupLayout layout=new javax.swing.GroupLayout(getContentPane());getContentPane().setLayout(layout);
-layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(layout.createSequentialGroup().addGap(260,260,260).addComponent(messagesButton,220,220,220).addGap(280,280,Short.MAX_VALUE))
+layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(layout.createSequentialGroup().addGap(260,260,260).addGap(280,280,Short.MAX_VALUE))
 .addGroup(layout.createSequentialGroup().addGap(15,15,15).addComponent(brand,200,200,200).addGap(545,545,Short.MAX_VALUE))
 .addGroup(layout.createSequentialGroup().addGap(15,15,15).addComponent(home,200,200,200).addGap(545,545,Short.MAX_VALUE))
 .addGroup(layout.createSequentialGroup().addGap(15,15,15).addComponent(browse,200,200,200).addGap(545,545,Short.MAX_VALUE))
@@ -60,7 +57,7 @@ layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Ali
 .addGroup(layout.createSequentialGroup().addGap(260,260,260).addComponent(emailValue,460,460,460).addGap(40,40,Short.MAX_VALUE))
 .addGroup(layout.createSequentialGroup().addGap(260,260,260).addComponent(logout,220,220,220).addGap(280,280,Short.MAX_VALUE))
 .addGroup(layout.createSequentialGroup().addComponent(leftPanel,230,230,230).addGap(530,530,Short.MAX_VALUE)));
-layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(layout.createSequentialGroup().addGap(395,395,395).addComponent(messagesButton,40,40,40).addGap(185,185,Short.MAX_VALUE))
+layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(layout.createSequentialGroup().addGap(395,395,395).addGap(185,185,Short.MAX_VALUE))
 .addGroup(layout.createSequentialGroup().addGap(60,60,60).addComponent(brand,40,40,40).addGap(520,520,Short.MAX_VALUE))
 .addGroup(layout.createSequentialGroup().addGap(180,180,180).addComponent(home,45,45,45).addGap(395,395,Short.MAX_VALUE))
 .addGroup(layout.createSequentialGroup().addGap(240,240,240).addComponent(browse,45,45,45).addGap(335,335,Short.MAX_VALUE))
@@ -86,7 +83,7 @@ brand.setForeground(new java.awt.Color(255,255,255));
 pack();setLocationRelativeTo(null);
 }// </editor-fold>//GEN-END:initComponents
 // Variables declaration - do not modify//GEN-BEGIN:variables
-private javax.swing.JButton messagesButton;
+
 private javax.swing.JPanel leftPanel;
 private javax.swing.JLabel brand;
 private javax.swing.JButton home;
@@ -101,3 +98,4 @@ private javax.swing.JButton logout;
 // End of variables declaration//GEN-END:variables
 public static void main(String[] args){java.awt.EventQueue.invokeLater(()->new accountData().setVisible(true));}
 }
+
